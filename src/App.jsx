@@ -3,39 +3,23 @@ import { ToastContainer } from 'react-toastify';
 import { LuClipboardCopy } from "react-icons/lu";
 import { sharePw, writeClipboardText } from "./utils/funcs";
 
-import 'react-toastify/dist/ReactToastify.css';
-import "./App.css";
+
+const symbs = "#@%&$";
+const numbers = "9735640281";
+const alpha_lower = "abcdefghijklmnopqrstuvwxyz";
+const alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 function App() {
 
     const [result, setPassword] = useState("");
 
-    const buffer = new ArrayBuffer(64);
-    const rand_numbers = new BigUint64Array(buffer, 8, 4);
-
-    self.crypto.getRandomValues(rand_numbers);
-
-    const symbs = "#@%&$";
-    const numbers = "9735640281";
-    const alpha_lower = "abcdefghijklmnopqrstuvwxyz";
-    const alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    let combineRand = "";
+    let mix_all = symbs + alpha_lower + numbers + alpha_upper;
+    let res = "";
 
     const generate = () => {
-        const rand_final = rand_numbers[Math.floor(Math.random() * 4)].toString(36);
-        let mix_all =
-            alpha_lower.slice(Math.floor(Math.random() * 26)).toString()
-            + symbs.slice(Math.floor(Math.random() * 5)).toString()
-            + numbers.slice(Math.floor(Math.random() * 10)).toString()
-            + alpha_upper.slice(Math.floor(Math.random() * 26)).toString();
-
-        for (let index = 0; index < 21; index++) {
-            combineRand += mix_all[parseInt(rand_final[index % rand_final.length], 36) % mix_all.length]
-        }
-
-        setPassword(combineRand);
+        for (let i = 0; i < 21; i++) { res += mix_all[Math.floor(Math.random() * mix_all.length)].toString(); }
+        setPassword(res);
     }
 
     return (
@@ -46,7 +30,7 @@ function App() {
                     <header className="app-header">
                         <h1>Password Generator</h1>
                     </header>
-                    <main className="app-main">
+                    <div className="app-main">
                         <div className="result-container">
                             <input
                                 readOnly
@@ -79,9 +63,9 @@ function App() {
                                 Generate Password
                             </button>
                         </div>
-                    </main>
+                    </div>
                     <footer className="app-footer">
-                        <p style={{textTransform: "capitalize"}}>Made for security purposes!!</p>
+                        <p style={{ textTransform: "capitalize" }}>Made for security purposes!!</p>
                     </footer>
                 </div>
             </div>
@@ -95,4 +79,4 @@ function App() {
     )
 }
 
-export default App
+export default App;
