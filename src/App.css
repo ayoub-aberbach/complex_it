@@ -1,6 +1,6 @@
 :root {
     --primary: #0d9488;
-    --secondary: #3b82f6;
+    --secondary: #1d0289;
     --light: #f9fafb;
     --dark: #1e293b;
     --accent: #94a3b8;
@@ -12,7 +12,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background: var(--gradient);
+    background: var(--secondary);
     color: var(--dark);
     display: flex;
     justify-content: center;
@@ -142,7 +142,46 @@ body {
 
 .app-footer {
     text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-    color: var(--accent);
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    font-family: 'Inter', sans-serif;
+}
+
+.app-footer p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #000;
+    text-transform: capitalize;
+    opacity: 0.8;
+}
+
+.app-footer a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #0366d6, #0550a8);
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.app-footer a:hover {
+    background: linear-gradient(90deg, #0550a8, #0366d6);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.app-footer a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-footer a::before {
+    content: '\f09b';
+    font-family: 'Font Awesome 5 Brands';
+    margin-right: 8px;
 }

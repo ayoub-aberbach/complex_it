@@ -15,20 +15,21 @@ function App() {
     const [result, setPassword] = useState("");
 
     let mix_all = symbs + alpha_lower + numbers + alpha_upper;
-    let res = "";
+    let res;
 
     const generate = () => {
-        for (let i = 0; i < 21; i++) { res += mix_all[Math.floor(Math.random() * mix_all.length)].toString(); }
+        for (let i = 0; i < 21; i++) {
+            res += mix_all[Math.floor(Math.random() * mix_all.length)].toString();
+        }
         setPassword(res);
     }
 
     return (
         <>
-            <h1 className="title">Complex it</h1>
             <div id="app">
                 <div className="app-container">
                     <header className="app-header">
-                        <h1>Password Generator</h1>
+                        <h1 style={{ textDecorationLine: "underline", fontSize: "30px" }}>Complex it</h1>
                     </header>
                     <div className="app-main">
                         <div className="result-container">
@@ -65,15 +66,16 @@ function App() {
                         </div>
                     </div>
                     <footer className="app-footer">
-                        <p style={{ textTransform: "capitalize" }}>Made for security purposes!!</p>
+                        <p style={{ textTransform: "capitalize", color: "#000" }}>Made for security purposes!!</p>
+                        <a href="https://github.com/ayoub-aberbach" target="_blank" id="my_github">My Github</a>
                     </footer>
                 </div>
             </div>
             <ToastContainer
                 position="top-center"
-                autoClose={2000}
                 pauseOnHover={false}
                 closeButton={false}
+                autoClose={1200}
             />
         </>
     )
