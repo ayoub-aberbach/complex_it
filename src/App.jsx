@@ -15,7 +15,7 @@ function App() {
     const [result, setPassword] = useState("");
 
     let mix_all = symbs + alpha_lower + numbers + alpha_upper;
-    let res;
+    let res = "";
 
     const generate = () => {
         for (let i = 0; i < 21; i++) {
