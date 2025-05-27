@@ -1,81 +1,60 @@
 import { useState } from "react";
-import { ToastContainer } from 'react-toastify';
-import { LuClipboardCopy } from "react-icons/lu";
-import { sharePw, writeClipboardText } from "./utils/funcs";
+import { toast, ToastContainer } from 'react-toastify';
 
-
-const symbs = "#@%&$";
-const numbers = "9735640281";
-const alpha_lower = "abcdefghijklmnopqrstuvwxyz";
-const alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+import PasswordRange from "./components/PasswordRange";
+import PasswordCont from "./components/PasswordCont";
+import Btns from "./components/Btns";
 
 
 function App() {
 
     const [result, setPassword] = useState("");
+    const [pw_range, setRange] = useState(10);
 
-    let mix_all = symbs + alpha_lower + numbers + alpha_upper;
-    let res = "";
+    const randomString = import.meta.env.VITE_RDSTR
+    //"$abcdefghi@jklmnopqrs#tuvwxyz9735%640281ABCDEFGHIJK&LMNOPQRSTUVWXYZ_";
 
     const generate = () => {
-        for (let i = 0; i < 21; i++) {
-            res += mix_all[Math.floor(Math.random() * mix_all.length)].toString();
+        if (pw_range < 10) {
+            toast.warning('Password Length Recommended <= 10');
+            setRange(10);
+            return
         }
+
+        let res = "";
+
+        for (let i = 0; i < pw_range; i++) {
+            res += randomString[Math.floor(Math.random() * randomString.length)].toString();
+        }
+        console.log(Math.round(Math.random() * randomString.length - 1));
         setPassword(res);
     }
 
     return (
         <>
-            <div id="app">
+            <div id="app" className="bg-dark">
                 <div className="app-container">
-                    <header className="app-header">
-                        <h1 style={{ textDecorationLine: "underline", fontSize: "30px" }}>Complex it</h1>
-                    </header>
+                    <header className="app-header"></header>
+
                     <div className="app-main">
-                        <div className="result-container">
-                            <input
-                                readOnly
-                                type="text"
-                                id="result"
-                                placeholder="Your Password"
-                                value={result}
-                                onChange={e => setPassword(e.target.value)}
-                            />
-                            <button
-                                className="copy-btn"
-                                title="Copy to clipboard"
-                                onClick={() => writeClipboardText(result)}
-                            >
-                                <LuClipboardCopy size={20} />
-                            </button>
-                        </div>
-                        <div className="action-buttons">
-                            <button
-                                className="btn-primary share-btn"
-                                onClick={() => sharePw(result)}
-                                disabled={!result}
-                            >
-                                Share Password
-                            </button>
-                            <button
-                                className="btn-primary generate-btn"
-                                onClick={generate}
-                            >
-                                Generate Password
-                            </button>
-                        </div>
+                        <PasswordCont result={result} setPassword={setPassword} />
+                        <PasswordRange pw_range={pw_range} setRange={setRange} />
+                        <Btns result={result} generate={generate} />
                     </div>
+
                     <footer className="app-footer">
                         <p style={{ textTransform: "capitalize", color: "#000" }}>Made for security purposes!!</p>
                         <a href="https://github.com/ayoub-aberbach" target="_blank" id="my_github">My Github</a>
                     </footer>
                 </div>
             </div>
+
             <ToastContainer
                 position="top-center"
                 pauseOnHover={false}
                 closeButton={false}
                 autoClose={1200}
+                style={{ width: "100%" }}
             />
         </>
     )
