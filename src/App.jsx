@@ -12,7 +12,6 @@ function App() {
     const [pw_range, setRange] = useState(10);
 
     const randomString = import.meta.env.VITE_RDSTR
-    //"$abcdefghi@jklmnopqr_stuvwxyz9735%640281ABCDEFGHIJK&LMNOPQRSTUVWXYZ";
 
     const generate = () => {
         if (pw_range < 10) {
@@ -24,7 +23,7 @@ function App() {
         let res = "";
 
         for (let i = 0; i < pw_range; i++) {
-            res += randomString[Math.floor(Math.random() * randomString.length)].toString();
+            res += randomString[Math.floor(Math.random() * String(randomString)?.length)].toString();
         }
 
         setPassword(res);
