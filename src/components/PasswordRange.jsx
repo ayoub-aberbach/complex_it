@@ -8,7 +8,7 @@ function PasswordRange({ pw_range, setRange }) {
                 <input
                     id="pw_length"
                     type="range"
-                    max={30}
+                    max={50}
                     value={pw_range}
                     onChange={e => setRange(e.target.value)}
                 />

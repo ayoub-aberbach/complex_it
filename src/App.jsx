@@ -11,11 +11,11 @@ function App() {
     const [result, setPassword] = useState("");
     const [pw_range, setRange] = useState(10);
 
-    const randomString = "$abcdefghi@jklmnopqr_stuvwxyz9735%640281ABCDEFGHIJK&LMNOPQRSTUVWXYZ"
+    const randomString = "$abc0defghi@jklmno$6pqr_stuvwxyz&9735%640281ABCDE_FGHIJK&LMNOPQRST4@UVWXYZ"
 
     const generate = () => {
         if (pw_range < 10) {
-            toast.warning('Password Length Recommended <= 10');
+            toast.warning('More than 10 is Recommended');
             setRange(10);
             return
         }
