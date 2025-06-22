@@ -53,7 +53,10 @@ function App() {
         <>
             <div className="app">
                 <header className="app-header">
-                    <h1><i className="fas fa-lock"></i> Secure Password Generator</h1>
+                    <h1>
+                        <i className="fas fa-lock"></i>
+                        <span>Secure Password Generator</span>
+                    </h1>
                 </header>
 
                 <main className="app-main">
