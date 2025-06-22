@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import 'react-toastify/dist/ReactToastify.css';
-import "./App.css";
+import "./index.css";
 
 import App from './App.jsx';
 
