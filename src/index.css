@@ -274,11 +274,22 @@ body {
     margin: 0.3rem 0;
 }
 
+/* Accessibility enhancements */
+*:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
+    body {
+        margin: 0 auto;
+        width: auto;
+        padding-inline: 1rem;
+    }
+
     .app {
-        max-width: 95%;
-        margin: 1rem auto;
+        width: auto;
     }
 
     .app-main {
@@ -320,6 +331,16 @@ body {
 }
 
 @media (max-width: 480px) {
+    body {
+        margin: 0 auto;
+        width: auto;
+        padding-inline: 1rem;
+    }
+
+    .app {
+        width: auto;
+    }
+
     .app-header h1 {
         font-size: 1.3rem;
     }
@@ -343,10 +364,4 @@ body {
         align-items: center;
         justify-content: center;
     }
-}
-
-/* Accessibility enhancements */
-*:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 2px;
 }
