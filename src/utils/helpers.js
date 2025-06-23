@@ -6,19 +6,24 @@ export const sharePw = async (result) => {
         return;
     }
 
+    navigator.vibrate(200);
     toast.warning("Sharing is Unsupported!!");
 };
 
-export async function copyToClip(result) {
+export const copyToClip = async (result) => {
     try {
         if (!result || result === "") {
-            toast.warning('NOTHING TO COPY');
+            navigator.vibrate(200);
+            toast.warning('Nothing to copy');
+
             return;
         }
 
         await navigator.clipboard.writeText(result);
-        toast.success('COPIED TO CLIPBOARD');
+        toast.success('Copied to Clipboard');
     } catch (error) {
+        navigator.vibrate(200);
+        toast.error(error.message);
         console.error(error.message);
     }
 }

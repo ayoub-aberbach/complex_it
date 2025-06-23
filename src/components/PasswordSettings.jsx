@@ -7,14 +7,15 @@ export default function PasswordSettings({ pw_range, setRange }) {
             <div className="pwLnCn">
                 <div className="pwLnBox">
                     <label htmlFor="length">Password Length:</label>
-                    <input
-                        max={50}
-                        type="range"
-                        value={pw_range}
-                        onChange={e => setRange(Number(e.target.value))}
-                    />
                     <span>{pw_range}</span>
                 </div>
+                <input
+                    id="length"
+                    max={50}
+                    type="range"
+                    value={pw_range}
+                    onChange={e => setRange(Number(e.target.value))}
+                />
             </div>
         </div>
     )

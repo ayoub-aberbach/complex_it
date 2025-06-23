@@ -8,6 +8,7 @@ export default function PasswordCont({ password }) {
             </h2>
             <div className="result-container">
                 <input
+                    id="password"
                     readOnly
                     type="text"
                     value={password}

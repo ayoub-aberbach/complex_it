@@ -16,9 +16,12 @@ function App() {
     useEffect(() => {
         const onStart = () => {
             if (pw_range < 10) {
-                toast.warning('NOT RECOMMENDED');
-                setRange(10);
-                return
+                setTimeout(() => {
+                    setRange(10);
+                    toast.warning('NOT RECOMMENDED');
+                }, 1000);
+
+                return;
             }
 
             let res = "";
@@ -36,7 +39,8 @@ function App() {
     const generate = () => {
         if (pw_range < 10) {
             toast.warning('NOT RECOMMENDED');
-            setRange(10);
+            setTimeout(() => setRange(10), 1000);
+
             return
         }
 
@@ -54,7 +58,6 @@ function App() {
             <div className="app">
                 <header className="app-header">
                     <h1>
-                        <i className="fas fa-lock"></i>
                         <span>Secure Password Generator</span>
                     </h1>
                 </header>

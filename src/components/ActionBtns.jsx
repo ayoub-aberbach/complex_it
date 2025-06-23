@@ -13,7 +13,9 @@ export default function ActionBtns({ password, generate }) {
                 className="btn-primary"
                 disabled={!password}
                 aria-label="share"
-            ><i className="fas fa-share-alt"></i>
+            >
+                <i className="fas fa-share-alt"></i>
+                <span>Share</span>
             </button>
         </div>
     )
